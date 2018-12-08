@@ -1,17 +1,20 @@
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import { createStackNavigator, createAppContainer} from 'react-navigation';
 import HomeScreen from './src/screens/HomeScreen';
+import {Text} from 'react-native'
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
-
-export default class App extends Component {
-  render() {
-    return <HomeScreen/>
-  }
+const TripScreen = props => {
+  return (
+    <Text style={{paddingTop: 200}}>Trip</Text>
+  )
 }
+
+
+const AppNavigator = createStackNavigator({
+  Home: HomeScreen,
+  Trips: TripScreen
+}, {initialRouteName: 'Home'})
+
+export default createAppContainer(AppNavigator)
+
 

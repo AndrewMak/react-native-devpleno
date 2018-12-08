@@ -34,6 +34,14 @@ export default styles = StyleSheet.create({
     },
     ButtonTextPlaneja: {
         textAlign: 'center',
-        fontSize: 18
+        fontSize: 18,
+        width: 220
     },
+    pin:{
+        marginTop: 16,
+        marginBottom:16
+    },
+    seta:{
+        marginTop: 16
+    }
 })

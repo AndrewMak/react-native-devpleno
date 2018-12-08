@@ -6,6 +6,9 @@ import styles from './styles'
 
 
 class HomeScreen extends Component {
+    static navigationOptions={
+      header: null  
+    }
 state = {
     show: true
 }
@@ -36,11 +39,11 @@ handleCounter = () => {
                     </View>
                     </TouchableWithoutFeedback>
                     : 
-                    <TouchableWithoutFeedback onPress={this.handleCounter}>
+                    <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('Trips')}>
                     <View style={styles.buttonBackgroundPlaneja}>
-                    <Image source={assets.icon}/>
-                       <Text style={styles.ButtonTextPlaneja}>Vamos Planejar sia primeira viagem?</Text>
-                       <Image source={assets.seta}/>                   
+                    <Image source={assets.icon} style={styles.pin}/>
+                       <Text style={styles.ButtonTextPlaneja}>Vamos Planejar sua primeira viagem?</Text>
+                       <Image source={assets.seta} style={styles.seta}/>                   
                        </View>
                     </TouchableWithoutFeedback>
                 }
