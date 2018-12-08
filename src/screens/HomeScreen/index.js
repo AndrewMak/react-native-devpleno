@@ -1,43 +1,19 @@
 import React, {Component} from 'react';
 import {View, Text,StyleSheet, Image, ImageBackground, TouchableWithoutFeedback} from 'react-native'
+import assets from './assets'
+import styles from './styles'
 
-const styles = StyleSheet.create({
-    background: {
-        flex: 1,
-        flexDirection: 'column',
-        alignItems: 'stretch',
-        justifyContent: 'space-between'
-    },
-    WrapperlogoTripPlanner: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center'
-    },
-    WrapperlogoDevPleno: {
-        flexDirection: 'row',
-        alignItems: 'flex-end',
-        justifyContent: 'center',
-        paddingBottom: 32
-    },
-    buttonBackground: {
-        backgroundColor: 'white',
-        paddingBottom: 16,
-        paddingTop: 16
-    },
-    ButtonText: {
-        textAlign: 'center',
-        fontSize: 18
-    }
-})
 
-const assets = {
-    background: require('../../../assets/Group.png'),
-    logotrip: require('../../../assets/logo-tripplanner.png'),
-    logodev: require('../../../assets/devlogo.png')
-}
 
 class HomeScreen extends Component {
-
+state = {
+    show: true
+}
+handleCounter = () => {
+    this.setState({
+        show: !this.state.show
+    })
+}
 
     render() { 
         return (
@@ -52,11 +28,23 @@ class HomeScreen extends Component {
                 <View style={styles.WrapperlogoDevPleno}>
                     <Image source={assets.logodev}/>        
                 </View>
-                 <TouchableWithoutFeedback>
-                     <View style={styles.buttonBackground}>
-                        <Text style={styles.ButtonText}>CONTINUAR</Text>
-                     </View>
-                 </TouchableWithoutFeedback>
+                {
+                    !this.state.show ? 
+                    <TouchableWithoutFeedback onPress={this.handleCounter}>
+                    <View style={styles.buttonBackground}>
+                       <Text style={styles.ButtonText}>Começar!</Text>
+                    </View>
+                    </TouchableWithoutFeedback>
+                    : 
+                    <TouchableWithoutFeedback onPress={this.handleCounter}>
+                    <View style={styles.buttonBackgroundPlaneja}>
+                    <Image source={assets.icon}/>
+                       <Text style={styles.ButtonTextPlaneja}>Vamos Planejar sia primeira viagem?</Text>
+                       <Image source={assets.seta}/>                   
+                       </View>
+                    </TouchableWithoutFeedback>
+                }
+                
             </ImageBackground>
         )
     }
