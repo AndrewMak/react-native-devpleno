@@ -3,8 +3,6 @@ import {View, Text,StyleSheet, Image, ImageBackground, TouchableWithoutFeedback}
 import assets from './assets'
 import styles from './styles'
 
-
-
 class HomeScreen extends Component {
     static navigationOptions={
       header: null  
