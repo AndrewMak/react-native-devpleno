@@ -5,7 +5,8 @@ export default styles = StyleSheet.create({
         backgroundColor: 'white',
         paddingLeft: 16,
         paddingTop: 16,
-        paddingRight:16
+        paddingRight:16,
+        paddingBottom:16
     },
     image: {
         backgroundColor: 'green',

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {View, Text, Dimensions, FlatList} from 'react-native'
 import Trip from './Trip'
+import isIphoneX from '../../utils/isIphoneX'
 class TripsScreen extends Component{
 
     static navigationOptions = {
@@ -10,6 +11,7 @@ class TripsScreen extends Component{
        return <Trip onPress={() => this.props.navigation.navigate('Trip')} title={item.item.name} price={item.item.price}></Trip> 
     }
     render(){
+        console.log(isIphonex())
         const trips = [{
                 id: '1',
                 name: 'EuroTrip 2019',
@@ -34,7 +36,7 @@ class TripsScreen extends Component{
                 <Text>Mapa</Text>
             </View>
             <View style={{
-                backgroundColor:'pink'            
+                backgroundColor:'white'            
             }}>
             <FlatList 
             data={trips}
@@ -42,6 +44,7 @@ class TripsScreen extends Component{
             horizontal
             pagingEnabled
             keyExtractor={item=> item.id}
+            style={[isIphoneX() ? {marginBottom:20} : null ]}
             />
                       
             </View>

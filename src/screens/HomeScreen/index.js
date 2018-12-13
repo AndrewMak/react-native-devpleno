@@ -2,13 +2,14 @@ import React, {Component} from 'react';
 import {View, Text,StyleSheet, Image, ImageBackground, TouchableWithoutFeedback} from 'react-native'
 import assets from './assets'
 import styles from './styles'
+import isIphoneX from '../../utils/isIphoneX'
 
 class HomeScreen extends Component {
     static navigationOptions={
       header: null  
     }
 state = {
-    show: true
+    show: false
 }
 handleCounter = () => {
     this.setState({

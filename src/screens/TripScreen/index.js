@@ -1,24 +1,19 @@
 import React, {Component} from 'react'
 import {View, Text,FlatList, Image,TouchableOpacity} from 'react-native'
-
+import styles from './styles'
 class TripScreen extends Component{
     static navigationOptions={
         header: null  
       }
     renderItem = item => {
         return(
-            <View style={{flex:1, flexDirection:'row',
-        paddingBottom:16}}>
-                <View style={{flex:1}}>
-                    <Text style={{fontWeight:'bold',
-                fontSize:18}}>{item.item.name}</Text>
+            <View style={styles.item}>
+                <View style={styles.wrapperInfo}>
+                    <Text style={styles.itemName}>{item.item.name}</Text>
                     <Text>{item.item.description}</Text>
                 </View>
-                <View style={{alignItems:'center',
-                                justifyContent:'center',
-                paddingRight:16
-                            }}>
-                    <Text style={{textAlign:'right',color:'#24C6DC',fontWeight:'bold'}}>{item.item.price}</Text>
+                <View style={styles.wrapperItemPrice}>
+                    <Text style={styles.itemPrice}>{item.item.price}</Text>
                 </View>
             </View>
         )
@@ -91,33 +86,16 @@ class TripScreen extends Component{
             }
         
         return (
-        <View style={{flex:1}}>
+        <View style={styles.wrapper}>
             
-            <View style={{height:192, backgroundColor:'grey'}}>
-            <View style={{
-                position:  'absolute',
-                top: 36,
-                left:16
-            }}>    
+            <View style={styles.header}>
+            <View style={styles.buttonBack}>    
             <TouchableOpacity onPress={()=> this.props.navigation.goBack()} >
                 <Image source={require('../../../assets/seta_esquerda.png')}></Image>
             </TouchableOpacity>
             </View>
-            <Text style={{ position:'absolute',
-                                left: 16,
-                                bottom:16,
-                                padding:10
-            }}>{trip.name}</Text>
-            <Text style={{
-                position: 'absolute',
-                bottom: 16,
-                right: 32,
-                textAlign: 'right',
-                backgroundColor: '#24C6DC',
-                padding: 4,
-                color: 'white'
-        
-            }}>{trip.price}</Text>
+            <Text style={styles.tripName}>{trip.name}</Text>
+            <Text style={styles.tripPrice}>{trip.price}</Text>
             </View>
             <FlatList
             style={{flex:1
@@ -127,7 +105,8 @@ class TripScreen extends Component{
                     paddingLeft:16
                 }}
             data={trip.places}
-            renderItem={this.renderItem} />
+            renderItem={this.renderItem}
+            keyExtractor={item=> item.id} />
         </View>)
     }
 }
